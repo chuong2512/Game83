@@ -2,13 +2,39 @@ using nhaccc;
 using UnityEngine;
 using UnityEngine.UI;
 
-[DefaultExecutionOrder(-99)]
+[DefaultExecutionOrder(-98)]
 public class AudioManager : Singleton<AudioManager>
 {
     public Image image;
     public Sprite iconOn, iconOff;
     public AudioSource musicSource;
     private SongSO _songSo;
+
+
+    /// <summary>
+    /// ////////////////////////////////////////////
+    /// </summary>
+    public void TurnMusicOff()
+    {
+        ChangeVolume(0.0f);
+    }
+
+    /// <summary>
+    /// ////////////////////////////////////////////
+    /// </summary>
+    public void TurnMusicOn()
+    {
+        ChangeVolume(1.0f);
+    }
+
+    /// <summary>
+    /// ////////////////////////////////////////////
+    /// </summary>
+    public void PlaySong(int id)
+    {
+        musicSource.clip = _songSo.GetSongWithID(id).song;
+        musicSource.Play();
+    }
 
     /// <summary>
     /// ////////////////////////////////////////////
@@ -38,37 +64,12 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    /// <summary>
-    /// ////////////////////////////////////////////
-    /// </summary>
-    public void TurnMusicOff()
-    {
-        ChangeVolume(0.0f);
-    }
-
-    /// <summary>
-    /// ////////////////////////////////////////////
-    /// </summary>
-    public void TurnMusicOn()
-    {
-        ChangeVolume(1.0f);
-    }
-
-    /// <summary>
-    /// ////////////////////////////////////////////
-    /// </summary>
-    public void PlaySong(int id)
-    {
-        musicSource.clip = _songSo.GetSongWithID(id).song;
-        musicSource.Play();
-    }
-
     public void Play()
     {
         if (musicSource.isPlaying)
         {
             musicSource.Stop();
-            timer.Stop();
+            timer.StopSOund();
         }
         else
         {

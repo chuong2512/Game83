@@ -6,6 +6,23 @@ public class MusicItem : MonoBehaviour
 {
     public Image iconImage;
     public TextMeshProUGUI nameTMP;
+
+    /// <summary>
+    /// ////////////////////////////////////////////
+    /// </summary>
+    public void UnChoose()
+    {
+        chooseObj.SetActive(false);
+    }
+
+    /// <summary>
+    /// ////////////////////////////////////////////
+    /// </summary>
+    public void Unlock()
+    {
+        lockObj.SetActive(false);
+    }
+
     public Button button;
     public GameObject lockObj, chooseObj;
 
@@ -25,21 +42,5 @@ public class MusicItem : MonoBehaviour
     public void Choose()
     {
         chooseObj.SetActive(true);
-    }
-
-    /// <summary>
-    /// ////////////////////////////////////////////
-    /// </summary>
-    public void UnChoose()
-    {
-        chooseObj.SetActive(false);
-    }
-
-    /// <summary>
-    /// ////////////////////////////////////////////
-    /// </summary>
-    public void Unlock()
-    {
-        lockObj.SetActive(false);
     }
 }

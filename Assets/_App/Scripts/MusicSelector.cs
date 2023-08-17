@@ -34,21 +34,6 @@ public class MusicSelector : MonoBehaviour
         yesBtn.onClick.AddListener(() => { popupUnlock.SetActive(false); });
     }
 
-    void OnEnable()
-    {
-        /////////////////////////////////////////////////////////////////////////
-        gameData = GameDataManager.Instance;
-        playerData = gameData.playerData;
-        /////////////////////////////////////////////////////////////////////////
-        diamonds.text = "" + playerData.coinCount;
-        currentMusic = playerData.currentSong;
-        if (currentMusic > -1)
-        {
-            musicItems[currentMusic].Choose();
-            AudioManager.Instance.PlaySong(currentMusic);
-            AudioManager.Instance.Play();
-        }
-    }
 
     /// <summary>
     /// 
@@ -120,6 +105,22 @@ public class MusicSelector : MonoBehaviour
             case 1000:
                 IAPManager.Instance.BuyProductID(IAPKey.PACK4);
                 break;
+        }
+    }
+
+    void OnEnable()
+    {
+        /////////////////////////////////////////////////////////////////////////
+        gameData = GameDataManager.Instance;
+        playerData = gameData.playerData;
+        /////////////////////////////////////////////////////////////////////////
+        diamonds.text = "" + playerData.coinCount;
+        currentMusic = playerData.currentSong;
+        if (currentMusic > -1)
+        {
+            musicItems[currentMusic].Choose();
+            AudioManager.Instance.PlaySong(currentMusic);
+            AudioManager.Instance.Play();
         }
     }
 

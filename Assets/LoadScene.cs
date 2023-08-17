@@ -12,14 +12,16 @@ public class LoadScene : MonoBehaviour
             StartCoroutine(IEStart());
         }
     }
-    
+
     IEnumerator IEStart()
     {
-        yield return new WaitForSeconds(1.5f);
-
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("App");
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void Load()
     {
         StartCoroutine(IEStart());

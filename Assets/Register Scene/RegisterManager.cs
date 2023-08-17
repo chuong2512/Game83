@@ -18,7 +18,8 @@ public class RegisterManager : MonoBehaviour
         checkTime = TimeSpan.FromSeconds(GameDataManager.Instance.playerData.time);
 
         TimeSpan test =
-            DateTime.Now.Subtract(DateTime.FromBinary(Convert.ToInt64(GameDataManager.Instance.playerData.timeRegister)));
+            DateTime.Now.Subtract(
+                DateTime.FromBinary(Convert.ToInt64(GameDataManager.Instance.playerData.timeRegister)));
 
         checkTime = checkTime.Subtract(test);
 
@@ -35,7 +36,7 @@ public class RegisterManager : MonoBehaviour
             checkTime = TimeSpan.Zero;
             GameDataManager.Instance.playerData.ResetTime();
         }
-        
+
 
         buttonContinue.onClick.AddListener(OnClickButton);
 
@@ -83,7 +84,7 @@ public class RegisterManager : MonoBehaviour
     {
         checkTime = checkTime.Add(TimeSpan.FromSeconds(i * 24 * 60 * 60));
 
-      GameDataManager.Instance.playerData.SetTimeRegister((long) checkTime.TotalSeconds);
+        GameDataManager.Instance.playerData.SetTimeRegister((long) checkTime.TotalSeconds);
         UpdateTimeRemain();
     }
 
@@ -105,40 +106,23 @@ public class RegisterManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void Test()
     {
         checkTime = TimeSpan.FromSeconds(7);
     }
 
-
-    public void TestLogTime()
-    {
-        TimeSpan test =
-            DateTime.Now.Subtract(DateTime.FromBinary(Convert.ToInt64(GameDataManager.Instance.playerData.timeRegister)));
-
-        string answer = string.Format("{0:D2} Day {1:D2}h:{2:D2}m:{3:D2}s",
-            test.Days,
-            test.Hours,
-            test.Minutes,
-            test.Seconds);
-
-        Debug.Log(answer);
-
-        string answer1 = string.Format("{0:D2} Day {1:D2}h:{2:D2}m:{3:D2}s",
-            checkTime.Days,
-            checkTime.Hours,
-            checkTime.Minutes,
-            checkTime.Seconds);
-
-        Debug.Log("check time : " + answer1);
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
     private void UpdateTimeRemain()
     {
         if (checkTime.TotalSeconds < 1)
         {
             textRemain.text = "You need to pay to continue";
-          GameDataManager.Instance.playerData.ResetTime();
+            GameDataManager.Instance.playerData.ResetTime();
         }
         else
         {

@@ -4,14 +4,20 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 10;
-    public bool timerIsRunning = false;
-    public TextMeshProUGUI timeText;
 
+
+    /// <summary>
+    /// 
+    /// </summary>
     private void Start()
     {
         timerIsRunning = false;
     }
 
+    /// <summary>
+    /// /
+    /// </summary>
+    /// <param name="timeToDisplay"></param>
     public void SetTimer(float timeToDisplay)
     {
         /////////////////////////////////////////////////////////////////////////
@@ -28,17 +34,21 @@ public class Timer : MonoBehaviour
         timeToDisplay += 1;
         float hours = Mathf.FloorToInt(timeToDisplay / 60 / 60);
         float minutes = Mathf.FloorToInt((timeToDisplay - hours * 60 * 60) / 60);
+        ///
         float seconds = Mathf.FloorToInt((timeToDisplay - hours * 60 * 60) % 60);
         timeText.text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
     }
 
-    public void Stop()
+    /// <summary>
+    /// 
+    /// </summary>
+    public void StopSOund()
     {
         /////////////////////////////////////////////////////////////////////////
-        AudioManager.Instance.musicSource.Stop();
         timeText.gameObject.SetActive(false);
         timeRemaining = 0;
         timerIsRunning = false;
+        AudioManager.Instance.musicSource.Stop();
     }
 
     void Update()
@@ -59,4 +69,10 @@ public class Timer : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool timerIsRunning = false;
+    public TextMeshProUGUI timeText;
 }

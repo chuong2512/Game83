@@ -67,10 +67,6 @@ namespace nhacdongvat
 #endif
         }
 
-        private IEnumerator CoHandleRestore(string productId)
-        {
-            yield return new WaitForSeconds(0.15f);
-        }
 
         public static string GetLocalizePrice(string key, string defaultPriceText)
         {
@@ -78,6 +74,12 @@ namespace nhacdongvat
                 return storeController.products.WithID(key).metadata.localizedPriceString;
             return defaultPriceText;
         }
+        
+        private IEnumerator CoHandleRestore(string productId)
+        {
+            yield return new WaitForSeconds(0.15f);
+        }
+
 
         private void InitIAP()
         {

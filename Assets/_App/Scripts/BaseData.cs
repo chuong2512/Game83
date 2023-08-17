@@ -8,21 +8,6 @@
     {
         protected string prefString;
 
-        public virtual void Init()
-        {
-            try
-            {
-                JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(prefString), this);
-            }
-            catch (Exception e)
-            {
-                ResetData();
-                Debug.LogError("Error On Load PlayerPrefs...");
-                Debug.LogError("Error : " + e);
-            }
-
-            CheckAppendData();
-        }
 
         public virtual void ResetData()
         {
@@ -37,6 +22,22 @@
             string json = JsonUtility.ToJson(this);
             // Debug.Log("json_______" + json);
             PlayerPrefs.SetString(prefString, json);
+        }
+
+        public virtual void Init()
+        {
+            try
+            {
+                JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(prefString), this);
+            }
+            catch (Exception e)
+            {
+                ResetData();
+                Debug.LogError("Error On Load PlayerPrefs...");
+                Debug.LogError("Error : " + e);
+            }
+
+            CheckAppendData();
         }
     }
 }
