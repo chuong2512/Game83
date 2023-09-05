@@ -18,7 +18,7 @@ namespace nhacdongvat
         public const string PACK2_REGISTER = "game83_register_2";
         public const string PACK3_REGISTER = "game83_register_3";
         public const string PACK4_REGISTER = "game83_register_4";
-        public const string PACK5_REGISTER = "game83_register_4";
+        public const string PACK5_REGISTER = "game83_register_5";
     }
 
     public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
